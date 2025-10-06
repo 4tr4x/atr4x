@@ -29,7 +29,6 @@ export default defineConfig({
 	vite: {
 		resolve: {
 			alias: {
-				// Redirige el componente original a tu versión personalizada
 				'@astrojs/starlight' : '/src/components/starlight',
 			},
 		},
