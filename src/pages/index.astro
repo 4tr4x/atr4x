@@ -1,0 +1,10 @@
+---
+// Este archivo anula el comportamiento de la página de inicio de Starlight
+// y fuerza una redirección inmediata de la raíz (/) a la página en español (/es).
+// Esto soluciona los problemas de estilo y navegación perdidos.
+const target = '/es';
+return Astro.redirect(target);
+---
+
+<!-- No hay contenido aquí, solo redirección -->
+
