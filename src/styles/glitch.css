@@ -1,0 +1,48 @@
+:global(.glitch) {
+  position: relative;
+  font-family: 'Share Tech Mono', 'Courier New', monospace;
+  color: #f5f5f5;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+:global(.glitch)::before,
+:global(.glitch)::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+:global(.glitch)::before {
+  left: 2px;
+  text-shadow: -2px 0 #0d0b0a;
+  animation: glitch-anim 3.2s infinite linear alternate-reverse;
+}
+
+:global(.glitch)::after {
+  left: -2px;
+  text-shadow: 2px 0 #701010;
+  animation: glitch-anim2 3.2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { clip-path: inset(0 0 80% 0); transform: translate(1px, -1px); }
+  20% { clip-path: inset(10% 0 60% 0); transform: translate(-2px, 1px); }
+  40% { clip-path: inset(20% 0 40% 0); transform: translate(-1px, 0); }
+  60% { clip-path: inset(30% 0 20% 0); transform: translate(2px, -1px); }
+  80% { clip-path: inset(40% 0 10% 0); transform: translate(1px, 1px); }
+  100% { clip-path: inset(0 0 80% 0); transform: translate(-1px, 0); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip-path: inset(30% 0 20% 0); transform: translate(-1px, 0); }
+  20% { clip-path: inset(40% 0 10% 0); transform: translate(1px, -1px); }
+  40% { clip-path: inset(50% 0 0 0); transform: translate(-2px, 1px); }
+  60% { clip-path: inset(0 0 80% 0); transform: translate(2px, -1px); }
+  80% { clip-path: inset(10% 0 60% 0); transform: translate(1px, 0); }
+  100% { clip-path: inset(20% 0 40% 0); transform: translate(-1px, 1px); }
+}

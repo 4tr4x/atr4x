@@ -20,7 +20,7 @@ export default defineConfig({
 				},
 			},
 			customCss: ['./src/fonts/font-face.css',],
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/blackhareigneo' }],
 			sidebar: [
   			{
 					label: 'HTB',
