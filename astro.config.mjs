@@ -30,7 +30,7 @@ export default defineConfig({
 		resolve: {
 			alias: {
 				// Redirige el componente original a tu versión personalizada
-				'@astrojs/starlight/components': '/src/components/starlight',
+				'@astrojs/': '/src/components/astro',
 			},
 		},
 	},

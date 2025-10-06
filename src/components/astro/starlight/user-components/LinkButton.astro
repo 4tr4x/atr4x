@@ -1,0 +1,109 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import type { StarlightIcon } from '../components/Icons';
+import Icon from './Icon.astro';
+
+interface Props extends Omit<HTMLAttributes<'a'>, 'href'> {
+	href: string | URL;
+	icon?: StarlightIcon | undefined;
+	iconPlacement?: 'start' | 'end' | undefined;
+	variant?: 'primary' | 'secondary' | 'minimal';
+}
+
+const {
+	class: className,
+	icon,
+	iconPlacement = 'end',
+	variant = 'primary',
+	...attrs
+} = Astro.props;
+---
+
+<a class:list={['sl-link-button not-content', variant, className]} {...attrs}>
+	{icon && iconPlacement === 'start' && <Icon name={icon} size="1.5rem" />}
+	<slot />
+	{icon && iconPlacement === 'end' && <Icon name={icon} size="1.5rem" />}
+</a>
+
+<style>
+	@layer starlight.components {
+		.sl-link-button {
+			align-items: center;
+			border: 2px solid #a4020f;
+			border-radius: 999rem;
+			display: inline-flex;
+			font-size: var(--sl-text-sm);
+			gap: 0.5em;
+			line-height: 1.1875;
+			outline-offset: 0.25rem;
+			padding: 0.5rem 1.2rem;
+			text-decoration: none;
+			background: linear-gradient(135deg, #85060c, #a4020f);
+			color: #fff;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			font-weight: bold;
+			position: relative;
+			overflow: hidden;
+			transition: transform 0.2s ease, box-shadow 0.3s ease;
+		}
+
+		.sl-link-button:hover {
+			transform: scale(1.05);
+			box-shadow: 0 0 15px #a4020f, 0 0 30px #85060c;
+		}
+
+		/* Glitch effect layers */
+		.sl-link-button::before,
+		.sl-link-button::after {
+			content: attr(data-text);
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			color: #fff;
+			overflow: hidden;
+			clip: rect(0, 0, 0, 0);
+		}
+
+		.sl-link-button::before {
+			left: 2px;
+			text-shadow: -2px 0 #a4020f;
+			animation: glitchTop 1s infinite linear alternate-reverse;
+		}
+
+		.sl-link-button::after {
+			left: -2px;
+			text-shadow: -2px 0 #85060c;
+			animation: glitchBottom 1s infinite linear alternate-reverse;
+		}
+
+		@keyframes glitchTop {
+			0% { clip: rect(0, 900px, 0, 0); }
+			10% { clip: rect(10px, 900px, 40px, 0); }
+			20% { clip: rect(85px, 900px, 140px, 0); }
+			30% { clip: rect(30px, 900px, 70px, 0); }
+			40% { clip: rect(10px, 900px, 50px, 0); }
+			50% { clip: rect(70px, 900px, 80px, 0); }
+			60% { clip: rect(0, 900px, 20px, 0); }
+			70% { clip: rect(50px, 900px, 100px, 0); }
+			80% { clip: rect(20px, 900px, 60px, 0); }
+			90% { clip: rect(0, 900px, 30px, 0); }
+			100% { clip: rect(10px, 900px, 40px, 0); }
+		}
+
+		@keyframes glitchBottom {
+			0% { clip: rect(50px, 900px, 90px, 0); }
+			10% { clip: rect(0, 900px, 60px, 0); }
+			20% { clip: rect(40px, 900px, 80px, 0); }
+			30% { clip: rect(20px, 900px, 70px, 0); }
+			40% { clip: rect(10px, 900px, 30px, 0); }
+			50% { clip: rect(60px, 900px, 90px, 0); }
+			60% { clip: rect(0, 900px, 20px, 0); }
+			70% { clip: rect(30px, 900px, 60px, 0); }
+			80% { clip: rect(50px, 900px, 100px, 0); }
+			90% { clip: rect(20px, 900px, 70px, 0); }
+			100% { clip: rect(0, 900px, 40px, 0); }
+		}
+	}
+</style>
