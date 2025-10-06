@@ -9,22 +9,15 @@ export default defineConfig({
 			title:'卂ㄒ尺4乂',
 			defaultLocale: 'es',
 			locales: {
-				//Idioma por defecto Español
-				es:{
-					label: 'Español',
-				},
-				//Documentacion pasada a ingles
-				en:{
-					label: 'English',
-					lang: 'en',
-				},
+				es: { label: 'Español' },
+				en: { label: 'English', lang: 'en' },
 			},
-			customCss: ['./src/fonts/font-face.css',],
+			customCss: ['./src/fonts/font-face.css'],
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/blackhareigneo' }],
 			sidebar: [
-  			{
+				{
 					label: 'HTB',
-					autogenerate: {directory: 'guides'}
+					autogenerate: { directory: 'guides' },
 				},
 				{
 					label: 'VullHub',
@@ -33,4 +26,12 @@ export default defineConfig({
 			],
 		}),
 	],
+	vite: {
+		resolve: {
+			alias: {
+				// Redirige el componente original a tu versión personalizada
+				'@astrojs/starlight/components/SiteTitle.astro': '/src/components/starlight/SiteTitle.astro',
+			},
+		},
+	},
 });
