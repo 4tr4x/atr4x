@@ -6,18 +6,28 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
+			title:'卂ㄒ尺4乂',
+			defaultLocale: 'es',
+			locales: {
+				//Idioma por defecto Español
+				es:{
+					label: 'Español',
+				},
+				//Documentacion pasada a ingles
+				en:{
+					label: 'English',
+					lang: 'en',
+				},
+			},
+			customCss: ['./src/fonts/font-face.css',],
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
 			sidebar: [
 				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
+					label: 'HTB',
+					autogenerate: {directory: 'guides'}
 				},
 				{
-					label: 'Reference',
+					label: 'VullHub',
 					autogenerate: { directory: 'reference' },
 				},
 			],
