@@ -2,6 +2,8 @@
 title: Analysis
 ---
 
+![htb](../../../../../assets/analysis/htb1.png)
+
 ## Enumeración
 
 Esta máquina la verdad es que la enumeración es un martirio, no tenemos credenciales y NetExec no reporta nada, no nos deja enumerar nada sin credenciales. Comenzamos como es costumbre viendo que puertos tenemos abiertos.
