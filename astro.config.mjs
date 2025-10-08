@@ -20,7 +20,7 @@ export default defineConfig({
 					autogenerate: { directory: 'guides' },
 				},
 				{
-					label: 'VullHub',
+					label: 'Articulos',
 					autogenerate: { directory: 'reference' },
 				},
 			],
